@@ -65,7 +65,7 @@ $config = array(
             data: jQuery.param({ 'name': computerName}),
             success: function (data) {
                 console.log(data);
-                if (data.id) {
+                if (typeof(data.id) != "undefined" && variable !== null) {
                     computerId = data.id;
                     renderComputerTree(computerId);
                 } else {
