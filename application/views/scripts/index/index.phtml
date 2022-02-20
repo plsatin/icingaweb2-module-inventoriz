@@ -116,7 +116,6 @@ $config = array(
 
 <script>
 
-    $.ajaxSetup({ async: false });
     var inventorizUrl = "<?php echo $config['inventoriz_url']; ?>";
 
     var dataManufacturer = [];
@@ -300,19 +299,9 @@ $config = array(
     }
 
 
-    // $.ajax({
-    //     type: "GET",
-    //     url: '/api/v1/reports/computers/list',
-    //     success: function (data) {
-    //         console.log(data);
-    //     },
-    //     error: function (jqXHR, text, error) {
-    //         console.log(error);
-    //     }
-    // });
 
 
-    setTimeout(function(){
+    // setTimeout(function(){
         $('#tableComputers').DataTable( {
             "ajax": inventorizUrl + '/api/v1/reports/computers/list',
             "columns": [
@@ -326,6 +315,6 @@ $config = array(
                 url: '//cdn.datatables.net/plug-ins/1.11.4/i18n/ru.json'
             }
         });
-    }, 1000);
+    // }, 1000);
 
 </script>
