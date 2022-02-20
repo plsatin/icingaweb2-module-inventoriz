@@ -1,10 +1,9 @@
 <?php
 
-namespace Icinga\Module\Hardwareinfo\Controllers;
+namespace Icinga\Module\Inventoriz\Controllers;
 
-use Icinga\Module\Hardwareinfo\Web\Tree\TreeRender;
 
-use Icinga\Module\Hardwareinfo\Web\Controller\MonitoringAwareController;
+use Icinga\Module\Inventoriz\Web\Controller\MonitoringAwareController;
 use Icinga\Module\Monitoring\DataView\DataView;
 use Icinga\Web\Url;
 

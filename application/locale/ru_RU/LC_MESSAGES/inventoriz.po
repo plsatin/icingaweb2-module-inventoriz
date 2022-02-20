@@ -1,12 +1,12 @@
 # Icinga Web 2 - Head for multiple monitoring backends.
 # Copyright (C) 2021 Icinga Development Team
-# This file is distributed under the same license as Hardwareinfo Module.
+# This file is distributed under the same license as Inventoriz Module.
 # Pavel Satin <pslater.ru@gmail.com>, 2018.
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Hardwareinfo Module (0.3.2.2)\n"
+"Project-Id-Version: Inventoriz Module (0.3.2.2)\n"
 "Report-Msgid-Bugs-To: dev@icinga.com\n"
 "POT-Creation-Date: 2021-07-03 21:37+0500\n"
 "PO-Revision-Date: 2021-07-03 21:33+0500\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: ../../../../configuration.php:32
-msgid "Adjust the general configuration of the hardwareinfo module"
+msgid "Adjust the general configuration of the Inventoriz module"
 msgstr "Настроить основную конфигурацию модуля Hardware Information"
 
 #: ../../../../configuration.php:13
@@ -42,8 +42,8 @@ msgid "HW Model"
 msgstr "Модель ПК"
 
 #: ../../../../configuration.php:23
-#: ../../../../library/Hardwareinfo/HostActions.php:13
-#: ../../../../library/Hardwareinfo/ServiceActions.php:17
+#: ../../../../library/Inventoriz/HostActions.php:13
+#: ../../../../library/Inventoriz/ServiceActions.php:17
 #: ../../../../application/controllers/IndexController.php:84
 #: ../../../../application/controllers/TreeController.php:52
 #: ../../../../application/controllers/TreeController.php:64
@@ -107,8 +107,8 @@ msgstr "Детальная информация об узле "
 msgid "Show hardware information for host "
 msgstr "Информация об оборудовании "
 
-#: ../../../../library/Hardwareinfo/HostActions.php:17
-#: ../../../../library/Hardwareinfo/ServiceActions.php:21
+#: ../../../../library/Inventoriz/HostActions.php:17
+#: ../../../../library/Inventoriz/ServiceActions.php:21
 msgid "Software Report"
 msgstr "Отчет о программах"
 
@@ -124,8 +124,8 @@ msgstr "Ресурс для использования"
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: ../../../../library/Hardwareinfo/HostActions.php:19
-#: ../../../../library/Hardwareinfo/ServiceActions.php:23
+#: ../../../../library/Inventoriz/HostActions.php:19
+#: ../../../../library/Inventoriz/ServiceActions.php:23
 msgid "Updates Report"
 msgstr "Отчет об обновлениях"
 

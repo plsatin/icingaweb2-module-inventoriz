@@ -1,8 +1,8 @@
 <?php
 
-namespace Icinga\Module\Hardwareinfo\Controllers;
+namespace Icinga\Module\Inventoriz\Controllers;
 
-use Icinga\Module\Hardwareinfo\Web\Controller\MonitoringAwareController;
+use Icinga\Module\Inventoriz\Web\Controller\MonitoringAwareController;
 use Icinga\Module\Monitoring\DataView\DataView;
 use Icinga\Data\Filter\Filter;
 use Icinga\Web\Url;
@@ -63,7 +63,7 @@ class IndexController extends MonitoringAwareController
     {
         $auth = Auth::getInstance();
         
-        if ($auth->hasPermission('hardwareinfo/hosts'))
+        if ($auth->hasPermission('inventoriz/hosts'))
         {
 
 
@@ -71,7 +71,7 @@ class IndexController extends MonitoringAwareController
                 'index',
                 array(
                     'label' => $this->translate('Hosts'),
-                    'url'   => 'hardwareinfo'
+                    'url'   => 'inventoriz'
                 )
             );
             
@@ -82,7 +82,7 @@ class IndexController extends MonitoringAwareController
                 array(
                     'label' => $this->translate('Information'),
                     'title' => $this->translate('Hardware Information'),
-                    'url'   => 'hardwareinfo/tree'
+                    'url'   => 'inventoriz/tree'
                 )
             );
 

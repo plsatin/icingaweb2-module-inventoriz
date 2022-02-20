@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Icinga\Module\Hardwareinfo\Forms\Config;
+namespace Icinga\Module\Inventoriz\Forms\Config;
 
 use Exception;
 use Icinga\Data\ResourceFactory;

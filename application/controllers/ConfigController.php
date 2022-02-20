@@ -1,8 +1,8 @@
 <?php
 
-namespace Icinga\Module\Hardwareinfo\Controllers;
+namespace Icinga\Module\Inventoriz\Controllers;
 
-use Icinga\Module\Hardwareinfo\Forms\Config\GeneralConfigForm;
+use Icinga\Module\Inventoriz\Forms\Config\GeneralConfigForm;
 use Icinga\Web\Controller;
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Icinga\Module\Hardwareinfo\Web\Controller;
+namespace Icinga\Module\Inventoriz\Web\Controller;
 
 use Icinga\Module\Monitoring\Controller;
 use Icinga\Module\Monitoring\DataView\DataView;

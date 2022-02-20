@@ -4,7 +4,7 @@
 
 * [Icinga Web 2](https://www.icinga.com/products/icinga-web-2/) (>= 2.4.1)
 
-## Installation the Hardwareinfo module
+## Installation the Inventoriz module
 
 
 Extract this module to your Icinga Web 2 modules directory as `inventoriz` directory.

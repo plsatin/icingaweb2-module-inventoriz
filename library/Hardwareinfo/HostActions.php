@@ -1,5 +1,5 @@
 <?php
-namespace Icinga\Module\Hardwareinfo;
+namespace Icinga\Module\Inventoriz;
 use Icinga\Module\Monitoring\Web\Hook\HostActionsHook;
 use Icinga\Module\Monitoring\Object\Host;
 use Icinga\Web\Url;
