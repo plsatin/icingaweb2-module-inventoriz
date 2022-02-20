@@ -22,10 +22,10 @@ $config = array(
 
 ?>
 
-
 <div class="controls">
 <?= $this->tabs ?>
 </div>
+
 
 <div class="container">
     <div class="row">
@@ -33,7 +33,7 @@ $config = array(
             <section class="section">
                 <header class="section-header">
                     <h1 class="section-title">
-                        
+                    <?php echo $this->translate('Hardware Information') ?>
                     </h1>
                 </header>
     
@@ -54,7 +54,7 @@ $config = array(
 
 <script>
     $(document).ready(function () {
-        
+
         var inventorizUrl = "<?php echo $config['inventoriz_url']; ?>";
         var computerName = "<?php echo $treehost; ?>";
         var computerId = "";
