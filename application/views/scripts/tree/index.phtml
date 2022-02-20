@@ -76,11 +76,17 @@ $config = array(
 
         function renderComputerTree(computerId){
             $('#tree').fancytree({
+                source: {url: inventorizUrl + '/api/v1/computers/'+computerId+'/properties'},
                 tooltip: true,
                 iconTooltip: function(event, data) {
                     return data.typeInfo.iconTooltip;
                 },
-                source: {url: inventorizUrl + '/api/v1/computers/' + computerId + '/properties'},
+                icon: function(event, data) {
+                    if (data.node.icon) {
+                        return 'img/inventoriz/icons/' + data.node.icon;
+                    }
+                },
+
             });
         }
 
