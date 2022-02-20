@@ -8,9 +8,23 @@ use Icinga\Web\Url;
 /** @var \Icinga\Web\Url $hostBaseUrl */
 /** @var \Icinga\Web\Url $serviceBaseUrl */
 
+use Icinga\Application\Config;
 
+$config = Config::module('inventoriz');
+$server_url = $config->get('inventoriz', 'url');
+
+// Requirements
+global $config;
+
+$config = array(
+  'inventoriz_url' => $server_url,
+);
 
 ?>
+
+
+
+
 
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" />
@@ -27,6 +41,11 @@ use Icinga\Web\Url;
 </style>
 
 
+<div class="controls">
+<?= $this->tabs ?>
+</div>
+
+
 
 <div class="container">
     <div class="row">
@@ -34,7 +53,7 @@ use Icinga\Web\Url;
             <section class="section">
                 <header class="section-header">
                     <h1 class="section-title">
-                        {{ $page_title ?? '' }}
+                        Dashboard
                     </h1>
                 </header>
     
@@ -110,17 +129,18 @@ use Icinga\Web\Url;
 <script>
 
     $.ajaxSetup({ async: false });
+    var inventorizUrl = "<?php echo $config['inventoriz_url']; ?>";
 
     var dataManufacturer = [];
     var dataOS = [];
 
     // $(document).ready(function () {
 
-        dataManufacturer = getDataFromInventoriz('/api/v1/reports/computers/properties/113'); //86
-        dataOS = getDataFromInventoriz('/api/v1/reports/computers/properties/15');
-        dataCPU = getDataFromInventoriz('/api/v1/reports/computers/properties/4');
-        // dataRAM = getDataFromInventoriz('/api/v1/reports/computers/properties/88');
-        dataUpdated = getDataFromInventorizUpdated('/api/v1/reports/computers/last_updated');
+        dataManufacturer = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/113'); //86
+        dataOS = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/15');
+        dataCPU = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/4');
+        // dataRAM = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/88');
+        dataUpdated = getDataFromInventorizUpdated(inventorizUrl + '/api/v1/reports/computers/last_updated');
 
         // console.log(dataUpdated);
 
@@ -306,7 +326,7 @@ use Icinga\Web\Url;
 
     setTimeout(function(){
         $('#tableComputers').DataTable( {
-            "ajax": '/api/v1/reports/computers/list',
+            "ajax": inventorizUrl + '/api/v1/reports/computers/list',
             "columns": [
                 { "width": "20%" },
                 { "width": "15%" },
