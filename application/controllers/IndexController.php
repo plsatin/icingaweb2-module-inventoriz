@@ -25,30 +25,30 @@ class IndexController extends MonitoringAwareController
     {
 
 
-        $this->view->hosts = $hosts = $this->applyMonitoringRestriction(
-        $this->backend->select()->from('hoststatus', [
-                'host_name',
-                'host_display_name',
-                'host_icon_image',
-                'host_state',
-                'os' => '_host_os',
-                'cpu' => '_host_cpu',
-                'ram' => '_host_ram',
-                'manufacturer' => '_host_manufacturer',
-                'model' => '_host_model',
+        // $this->view->hosts = $hosts = $this->applyMonitoringRestriction(
+        // $this->backend->select()->from('hoststatus', [
+        //         'host_name',
+        //         'host_display_name',
+        //         'host_icon_image',
+        //         'host_state',
+        //         'os' => '_host_os',
+        //         'cpu' => '_host_cpu',
+        //         'ram' => '_host_ram',
+        //         'manufacturer' => '_host_manufacturer',
+        //         'model' => '_host_model',
 
-            ])
-            ->applyFilter(Filter::fromQueryString('_host_os_type >'))
-        );
+        //     ])
+        //     ->applyFilter(Filter::fromQueryString('_host_os_type >'))
+        // );
 
-        $this->filterQuery($hosts);
-        $this->setupPaginationControl($hosts);
-        $this->setupLimitControl();
-        $this->setupSortControl([
-            'host_display_name' => mt('monitoring', 'Hostname'),
-            '_host_os'          => mt('monitoring', 'Host OS'),
-            'host_state'        => mt('monitoring', 'Current State'),
-        ], $hosts);
+        // $this->filterQuery($hosts);
+        // $this->setupPaginationControl($hosts);
+        // $this->setupLimitControl();
+        // $this->setupSortControl([
+        //     'host_display_name' => mt('monitoring', 'Hostname'),
+        //     '_host_os'          => mt('monitoring', 'Host OS'),
+        //     'host_state'        => mt('monitoring', 'Current State'),
+        // ], $hosts);
 
 
 
