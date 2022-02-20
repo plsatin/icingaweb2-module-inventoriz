@@ -18,11 +18,11 @@ $this->providePermission(
 if ($auth->hasPermission('inventoriz/hosts'))
 {
 
-    $section = $this->menuSection($this->translate('Hardware inventory'), array(
-        'url' => 'inventoriz',
-        'title' => $this->translate('Hardware Information'),
-        'icon' => 'host'
-    ));
+    // $section = $this->menuSection($this->translate('Hardware inventory'), array(
+    //     'url' => 'inventoriz',
+    //     'title' => $this->translate('Hardware Information'),
+    //     'icon' => 'host'
+    // ));
 
 }
 
