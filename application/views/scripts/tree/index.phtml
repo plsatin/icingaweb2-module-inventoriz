@@ -76,7 +76,7 @@ $config = array(
 
         function renderComputerTree(computerId){
             $('#tree').fancytree({
-                source: {url: inventorizUrl + '/api/v1/computers/'+computerId+'/properties'},
+                source: {url: inventorizUrl + '/api/v1/computers/' + computerId + '/properties'},
                 tooltip: true,
                 iconTooltip: function(event, data) {
                     return data.typeInfo.iconTooltip;
