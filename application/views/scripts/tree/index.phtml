@@ -53,36 +53,35 @@ $config = array(
 
 
 <script>
-    $(document).ready(function () {
-        var inventorizUrl = "<?php echo $config['inventoriz_url']; ?>";
-        var computerName = "<?php echo $treehost; ?>";
-        var computerId = "";
+    
+    var inventorizUrl = "<?php echo $config['inventoriz_url']; ?>";
+    var computerName = "<?php echo $treehost; ?>";
+    var computerId = "";
 
-        $.ajax({
-            type: "GET",
-            url: inventorizUrl + '/api/v1/computer-name',
-            data: jQuery.param({ 'name': computerName}),
-            success: function (data) {
-                console.log(data);
-                computerId = data.id;
-                renderComputerTree(computerId);
-            },
-            error: function (jqXHR, text, error) {
-                console.log(error);
-            }
-        });
-   
-
-        function renderComputerTree(computerId){
-            $('#tree').fancytree({
-                tooltip: true,
-                iconTooltip: function(event, data) {
-                    return data.typeInfo.iconTooltip;
-                },
-                source: {url: inventorizUrl + '/api/v1/computers/' + computerId + '/properties'},
-            });
+    $.ajax({
+        type: "GET",
+        url: inventorizUrl + '/api/v1/computer-name',
+        data: jQuery.param({ 'name': computerName}),
+        success: function (data) {
+            console.log(data);
+            computerId = data.id;
+            renderComputerTree(computerId);
+        },
+        error: function (jqXHR, text, error) {
+            console.log(error);
         }
-
     });
+
+
+    function renderComputerTree(computerId){
+        $('#tree').fancytree({
+            tooltip: true,
+            iconTooltip: function(event, data) {
+                return data.typeInfo.iconTooltip;
+            },
+            source: {url: inventorizUrl + '/api/v1/computers/' + computerId + '/properties'},
+        });
+    }
+
 
 </script>
