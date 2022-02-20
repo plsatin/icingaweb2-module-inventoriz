@@ -65,8 +65,12 @@ $config = array(
             data: jQuery.param({ 'name': computerName}),
             success: function (data) {
                 console.log(data);
-                computerId = data.id;
-                renderComputerTree(computerId);
+                if (data.id) {
+                    computerId = data.id;
+                    renderComputerTree(computerId);
+                } else {
+                    $('#tree').html('<p>No data</p>');
+                }
             },
             error: function (jqXHR, text, error) {
                 console.log(error);
