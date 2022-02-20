@@ -1,0 +1,31 @@
+<?php
+/* Icinga Web 2 OSMC Module (c) 2017 Icinga Development Team | GPLv2+ */
+namespace Icinga\Module\Hardwareinfo;
+
+use Icinga\Module\Monitoring\Hook\DetailviewExtensionHook;
+use Icinga\Module\Monitoring\Object\MonitoredObject;
+use Icinga\Module\Monitoring\Object\Service;
+use Icinga\Module\Monitoring\Object\Host;
+use Icinga\Module\Hardwareinfo\Web\Tree\TreeRender;
+
+
+class DetailviewExtension extends DetailviewExtensionHook
+{
+    public function getHtmlForObject(MonitoredObject $object)
+    {
+        // if ($object->getName() == "inventory-cycle") {
+
+        //     $r_AllClass =  "";
+
+        //     // Дутальный вид на вкладке сервиса - в разработке ...
+
+        //     $hardinfo_out = '<h2>Detail View [hardwareinfo]</h2><br><img src="/icingaweb2/img/inventoriz/logo-icinga.png"><br>';
+
+        //     return $hardinfo_out;
+        
+        // }
+
+    }
+
+
+}
