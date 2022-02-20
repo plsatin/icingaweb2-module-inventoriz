@@ -64,8 +64,9 @@ $config = array(
             url: inventorizUrl + '/api/v1/computer-name',
             data: jQuery.param({ 'name': computerName}),
             success: function (data) {
-                console.log(data);
-                if (typeof(data.id) != "undefined" && variable !== null) {
+                // console.log(data);
+                computerId = data.id;
+                if (typeof(computerId) != "undefined" && variable !== null) {
                     computerId = data.id;
                     renderComputerTree(computerId);
                 } else {
@@ -73,6 +74,7 @@ $config = array(
                 }
             },
             error: function (jqXHR, text, error) {
+                $('#tree').html('<p>' + error + '</p>');
                 console.log(error);
             }
         });
