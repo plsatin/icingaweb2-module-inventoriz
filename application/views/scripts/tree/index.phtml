@@ -77,6 +77,7 @@ $config = array(
             success: function (data) {
                 console.log(data);
                 auth_token = data.token;
+
                 $.ajax({
                     type: "GET",
                     url: inventorizUrl + '/api/v1/computer-name',
@@ -87,11 +88,11 @@ $config = array(
                         }
                     },
                     success: function (data) {
-                        // console.log(data);
+                        console.log(data);
                         computerId = data.id;
                         if (typeof(computerId) != "undefined" && computerId !== null) {
                             computerId = data.id;
-                            renderComputerTree(computerId);
+                            renderComputerTree(computerId, auth_token);
                         } else {
                             $('#tree').html('<p>No data</p>');
                         }
@@ -112,8 +113,9 @@ $config = array(
    
     });
 
-    function renderComputerTree(computerId){
+    function renderComputerTree(computerId, auth_token){
         $('#tree').fancytree({
+            ajax: { type: 'GET', Authorization: 'Bearer ' + auth_token },
             source: {url: inventorizUrl + '/api/v1/computers/' + computerId + '/hardware'},
             tooltip: true,
             iconTooltip: function(event, data) {
