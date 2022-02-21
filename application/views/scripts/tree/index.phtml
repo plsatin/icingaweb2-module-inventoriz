@@ -82,7 +82,7 @@ $config = array(
                     type: 'GET',
                     url: inventorizUrl + '/api/v1/computer-name',
                     headers: {
-                        'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                        'Content-type': 'application/json; charset=UTF-8'
                     },
                     data: jQuery.param({ 'name': computerName }),
                     beforeSend: function (xhr) {
