@@ -78,17 +78,15 @@ $config = array(
                 // console.log(data);
                 auth_token = data.token;
 
-                console.log(computerName);
-                console.log(auth_token);
+                // console.log(computerName);
+                // console.log(auth_token);
 
                 $.ajax({
                     type: 'GET',
                     url: inventorizUrl + '/api/v1/computer-name',
                     data: jQuery.param({ 'name': computerName }),
-                    beforeSend: function (xhr) {
-                        if (auth_token) {
-                            xhr.setRequestHeader('Authorization', 'Bearer ' + auth_token);
-                        }
+                    headers: {
+                        'Authorization': 'Bearer ' + auth_token
                     },
                     success: function (data) {
                         console.log(data);
