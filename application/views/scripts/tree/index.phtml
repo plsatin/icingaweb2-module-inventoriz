@@ -111,25 +111,29 @@ $config = array(
             }
         });
 
+
+
+        function renderComputerTree(computerId, auth_token){
+            $('#tree').fancytree({
+                ajax: { type: 'GET', Authorization: 'Bearer ' + auth_token },
+                source: { url: inventorizUrl + '/api/v1/computers/' + computerId + '/hardware' },
+                tooltip: true,
+                iconTooltip: function(event, data) {
+                    return data.typeInfo.iconTooltip;
+                },
+                icon: function(event, data) {
+                    if (data.node.icon) {
+                        return 'img/inventoriz/icons/' + data.node.icon;
+                    }
+                },
+
+            });
+        }
+
+
    
     });
 
-    function renderComputerTree(computerId, auth_token){
-        $('#tree').fancytree({
-            ajax: { type: 'GET', Authorization: 'Bearer ' + auth_token },
-            source: {url: inventorizUrl + '/api/v1/computers/' + computerId + '/hardware'},
-            tooltip: true,
-            iconTooltip: function(event, data) {
-                return data.typeInfo.iconTooltip;
-            },
-            icon: function(event, data) {
-                if (data.node.icon) {
-                    return 'img/inventoriz/icons/' + data.node.icon;
-                }
-            },
-
-        });
-    }
 
 
 </script>
