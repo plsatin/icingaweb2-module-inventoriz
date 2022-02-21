@@ -68,7 +68,7 @@ $config = array(
 
         var json_url_login = inventorizUrl + '/api/login';
         $.ajax({
-            type: "POST",
+            type: 'POST',
             url: json_url_login,
             headers: {
                 'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -81,7 +81,7 @@ $config = array(
                 $.ajax({
                     type: "GET",
                     url: inventorizUrl + '/api/v1/computer-name',
-                    data: jQuery.param({ 'name': computerName}),
+                    data: jQuery.param({ 'name': computerName }),
                     beforeSend: function (xhr) {
                         if (auth_token) {
                             xhr.setRequestHeader('Authorization', 'Bearer ' + auth_token);
@@ -90,7 +90,7 @@ $config = array(
                     success: function (data) {
                         console.log(data);
                         computerId = data.id;
-                        if (typeof(computerId) != "undefined" && computerId !== null) {
+                        if (typeof(computerId) != 'undefined' && computerId !== null) {
                             computerId = data.id;
                             renderComputerTree(computerId, auth_token);
                         } else {
