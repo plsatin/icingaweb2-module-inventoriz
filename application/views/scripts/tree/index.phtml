@@ -114,6 +114,7 @@ $config = array(
 
 
         function renderComputerTree(computerId, auth_token){
+            console.log(auth_token);
             $('#tree').fancytree({
                 ajax: { type: 'GET', Authorization: 'Bearer ' + auth_token },
                 source: { url: inventorizUrl + '/api/v1/computers/' + computerId + '/hardware' },
