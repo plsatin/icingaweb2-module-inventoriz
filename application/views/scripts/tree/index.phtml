@@ -12,12 +12,16 @@ use Icinga\Application\Config;
 
 $config = Config::module('inventoriz');
 $server_url = $config->get('inventoriz', 'url');
+$inventoriz_user = $config->get('inventoriz', 'user');
+$inventoriz_password = $config->get('inventoriz', 'password');
 
 // Requirements
 global $config;
 
 $config = array(
   'inventoriz_url' => $server_url,
+  'inventoriz_user' => $inventoriz_user,
+  'inventoriz_password' => $inventoriz_password
 );
 
 ?>
@@ -59,43 +63,70 @@ $config = array(
         var computerName = "<?php echo $treehost; ?>";
         var computerId = "";
 
+        var auth_token;
+
+
+        var json_url_login = inventorizUrl + '/api/login';
         $.ajax({
-            type: "GET",
-            url: inventorizUrl + '/api/v1/computer-name',
-            data: jQuery.param({ 'name': computerName}),
+            type: "POST",
+            url: json_url_login,
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            data: jQuery.param({ 'email': '<?php echo $config['inventoriz_user']; ?>', 'password': '<?php echo $config['inventoriz_password']; ?>'}),
             success: function (data) {
-                // console.log(data);
-                computerId = data.id;
-                if (typeof(computerId) != "undefined" && computerId !== null) {
-                    computerId = data.id;
-                    renderComputerTree(computerId);
-                } else {
-                    $('#tree').html('<p>No data</p>');
-                }
+                console.log(data);
+                auth_token = data.token;
+                $.ajax({
+                    type: "GET",
+                    url: inventorizUrl + '/api/v1/computer-name',
+                    data: jQuery.param({ 'name': computerName}),
+                    beforeSend: function (xhr) {
+                        if (auth_token) {
+                            xhr.setRequestHeader('Authorization', 'Bearer ' + auth_token);
+                        }
+                    },
+                    success: function (data) {
+                        // console.log(data);
+                        computerId = data.id;
+                        if (typeof(computerId) != "undefined" && computerId !== null) {
+                            computerId = data.id;
+                            renderComputerTree(computerId);
+                        } else {
+                            $('#tree').html('<p>No data</p>');
+                        }
+                    },
+                    error: function (jqXHR, text, error) {
+                        $('#tree').html('<p>' + error + '</p>');
+                        console.log(error);
+                    }
+                });
+
+
             },
             error: function (jqXHR, text, error) {
-                $('#tree').html('<p>' + error + '</p>');
                 console.log(error);
             }
         });
+
    
-
-        function renderComputerTree(computerId){
-            $('#tree').fancytree({
-                source: {url: inventorizUrl + '/api/v1/computers/' + computerId + '/hardware'},
-                tooltip: true,
-                iconTooltip: function(event, data) {
-                    return data.typeInfo.iconTooltip;
-                },
-                icon: function(event, data) {
-                    if (data.node.icon) {
-                        return 'img/inventoriz/icons/' + data.node.icon;
-                    }
-                },
-
-            });
-        }
-
     });
+
+    function renderComputerTree(computerId){
+        $('#tree').fancytree({
+            source: {url: inventorizUrl + '/api/v1/computers/' + computerId + '/hardware'},
+            tooltip: true,
+            iconTooltip: function(event, data) {
+                return data.typeInfo.iconTooltip;
+            },
+            icon: function(event, data) {
+                if (data.node.icon) {
+                    return 'img/inventoriz/icons/' + data.node.icon;
+                }
+            },
+
+        });
+    }
+
 
 </script>

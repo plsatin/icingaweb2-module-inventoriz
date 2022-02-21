@@ -42,7 +42,7 @@ class GeneralConfigForm extends ConfigForm
         );
 
         $this->addElement(
-            'password',
+            'text',
             'inventoriz_password',
             array(
                 'value'         => 'inventoriz_password',
