@@ -23,10 +23,10 @@ class GeneralConfigForm extends ConfigForm
             'text',
             'inventoriz_url',
             array(
-                'value'         => 'http://itdesk.rezhcable.ru:8400',
+                'value'         => 'http://itdesk.inventoriz.local:8400',
                 'label'         => 'Server URL',
                 'description'   => '',
-                'requirement'   => 'Example: http://itdesk.rezhcable.ru:8400'
+                'requirement'   => 'Example: http://itdesk.inventoriz.local:8400'
             )
         );
 
