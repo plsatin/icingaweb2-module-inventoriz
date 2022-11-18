@@ -16,7 +16,7 @@ function getPostData() {
 
 function makeGetRequest($baseURL) {
   $ch = curl_init();
-  $fullURL = $baseURL.<URLparams here>; 
+  $fullURL = $baseURL; 
 
   curl_setopt($ch, CURLOPT_URL, $fullURL);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
