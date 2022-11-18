@@ -8,6 +8,10 @@
 
 $(document).ready(function () {
 
+
+    var inventorizUrl = "/icingaweb2/proxy.php?url=http://itdesk.rezhcable.ru:8400";
+
+
     var loginFormBefore = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Вход<i class="glyph glyph-chevron-down-2"></i></a>' +
         '<ul class="dropdown-menu" role="menu">' +
         '<li><a href="#login-form-dialog" data-toggle="modal">Вход</a></li></ul>';
@@ -42,7 +46,7 @@ $(document).ready(function () {
 
             $('#header-login').html(loginFormAfterLogin);
         } else {
-            var json_url_profile = '/api/profile';
+            var json_url_profile = inventorizUrl + '/api/profile';
             $.ajax({
                 type: "GET",
                 url: json_url_profile,
@@ -77,7 +81,7 @@ $(document).ready(function () {
     }
 
     $("#login-form").submit(function () {
-        var json_url_login = '/api/login';
+        var json_url_login = inventorizUrl + '/api/login';
         $.ajax({
             type: "POST",
             url: json_url_login,
@@ -93,7 +97,7 @@ $(document).ready(function () {
                     console.log(token_date_exp.toString());
                     localStorage.token_date_exp =  token_date_exp.toString();
                     // console.log(localStorage.token_date_exp);
-                    var json_url_profile = '/api/profile';
+                    var json_url_profile = inventorizUrl + '/api/profile';
                     $.ajax({
                         type: "GET",
                         url: json_url_profile,
@@ -125,7 +129,7 @@ $(document).ready(function () {
 
 
     $("#logout-btn").click(function () {
-        var json_url_logout = '/api/logout';
+        var json_url_logout = inventorizUrl + '/api/logout';
         $.ajax({
             type: "POST",
             url: json_url_logout,
