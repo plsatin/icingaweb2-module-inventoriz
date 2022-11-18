@@ -26,19 +26,25 @@
     );
     
 
+
+
+        
 ?>
 
 
 
 
 
-
+<?php if (! $compact): ?>
 <div class="controls">
-<?= $this->tabs ?>
+    <?= $tabs ?>
 </div>
+<?php endif ?>
 
 
 
+
+<div class="content">
     <div class="row" id="inventoriz-index" data-api-url="<?php echo $config['inventoriz_url']; ?>">
         <div class="col-xs-24" style="width: 100%;">
             <section class="inventoriz-section">
@@ -98,7 +104,7 @@
             </section>
         </div>
     </div>
-
+</div>
 
 
 
