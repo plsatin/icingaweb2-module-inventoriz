@@ -1,33 +1,30 @@
 <?php
 
-use Icinga\Web\Url;
+    use Icinga\Web\Url;
 
-/** @var \Icinga\Web\View $this */
-/** @var \Icinga\Web\Widget\FilterEditor $filterEditor */
-/** @var \Icinga\Module\Monitoring\DataView\DataView $services */
-/** @var \Icinga\Web\Url $hostBaseUrl */
-/** @var \Icinga\Web\Url $serviceBaseUrl */
+    /** @var \Icinga\Web\View $this */
+    /** @var \Icinga\Web\Widget\FilterEditor $filterEditor */
+    /** @var \Icinga\Module\Monitoring\DataView\DataView $services */
+    /** @var \Icinga\Web\Url $hostBaseUrl */
+    /** @var \Icinga\Web\Url $serviceBaseUrl */
 
-use Icinga\Application\Config;
+    use Icinga\Application\Config;
 
-$config = Config::module('inventoriz');
-$server_url = $config->get('inventoriz', 'url');
+    $config = Config::module('inventoriz');
+    $server_url = $config->get('inventoriz', 'url');
 
-// Requirements
-global $config;
+    // Requirements
+    global $config;
 
-$config = array(
-  'inventoriz_url' => $server_url,
-);
-
+    // Работаем через прокси, для запросов на прямую убрать: /icingaweb2/proxy.php?url=
+    $config = array(
+        'inventoriz_url' => '/icingaweb2/proxy.php?url=' . $server_url,
+        'inventoriz_user' => $inventoriz_user,
+        'inventoriz_password' => $inventoriz_password
+    );
+    
 
 ?>
-
-
-
-
-
-
 
 
 
@@ -109,10 +106,11 @@ $config = array(
 
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script>
     $(document).ready(function () {
         setTimeout(function(){
             onLoadIndexPage();
-        }, 2000);
+        }, 1000);
     });
 </script>

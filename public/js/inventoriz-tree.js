@@ -7,8 +7,8 @@
 
     function onLoadTreePage() {
 
-        // Работаем через прокси, для запросов на прямую убрать: /icingaweb2/proxy.php?url=
-        var inventorizUrl = "/icingaweb2/proxy.php?url=" + $('#tree').attr('data-api-url');
+        
+        var inventorizUrl = $('#tree').attr('data-api-url');
         var computerName = $('#tree').attr('data-computer-name');
         var computerId = "";
 

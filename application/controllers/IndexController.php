@@ -65,8 +65,6 @@ class IndexController extends MonitoringAwareController
         
         if ($auth->hasPermission('inventoriz/hosts'))
         {
-
-
             return Widget::create('tabs')->add(
                 'index',
                 array(
