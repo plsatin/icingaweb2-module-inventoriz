@@ -29,8 +29,9 @@ function makeGetRequest($baseURL) {
     if($e = curl_error($ch)) {
         echo $e;
     } else {
-    $json = json_decode($response, true);
-    return print_r($json);
+        // $json = json_decode($response, true);
+        // return print_r($json);
+        return $response;
     }
 }
 
@@ -51,8 +52,9 @@ function makePostRequest($baseURL) {
     if($e = curl_error($ch)) {
         echo $e;
     } else {
-    $json = json_decode($response, true);
-    return print_r($json);
+        // $json = json_decode($response, true);
+        // return print_r($json);
+        return $response;
     }
 }
 
