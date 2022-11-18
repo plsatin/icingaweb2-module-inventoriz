@@ -75,11 +75,11 @@ $config = array(
             },
             data: jQuery.param({ 'email': '<?php echo $config['inventoriz_user']; ?>', 'password': '<?php echo $config['inventoriz_password']; ?>'}),
             success: function (data) {
-                // console.log(data);
+                console.log(data);
                 auth_token = data.token;
 
-                // console.log(computerName);
-                // console.log(auth_token);
+                console.log(computerName);
+                console.log(auth_token);
 
                 $.ajax({
                     type: 'GET',
