@@ -12,7 +12,7 @@
         //     async: false,
         // });
 
-        var inventorizUrl = "<?php echo $config['inventoriz_url']; ?>";
+        var inventorizUrl = $('#inventoriz-index').attr('data-api-url');
 
         var dataManufacturer = [];
         var dataOS = [];
@@ -58,7 +58,7 @@
     }
 
 
-    
+
     function drawChartManufacturers() {
         var data = google.visualization.arrayToDataTable(dataManufacturer);
         var options = {

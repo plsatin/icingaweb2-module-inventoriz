@@ -31,7 +31,7 @@
                     computerId = data.id;
                     if (typeof(computerId) != 'undefined' && computerId !== null) {
                         computerId = data.id;
-                        renderComputerTree(computerId, auth_token);
+                        renderComputerTree(computerId, auth_token, inventorizUrl);
                     } else {
                         console.log(data);
                         $('#tree').html('<p>No data</p>');
@@ -75,7 +75,7 @@
 
 
 
-    function renderComputerTree(computerId, auth_token){
+    function renderComputerTree(computerId, auth_token, inventorizUrl){
         // console.log(auth_token);
         $('#tree').fancytree({
             ajax: { type: 'GET',
