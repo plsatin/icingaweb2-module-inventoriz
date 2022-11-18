@@ -89,7 +89,7 @@ $config = array(
                         'Authorization': 'Bearer ' + auth_token
                     },
                     success: function (data) {
-                        // console.log(data);
+                        console.log(data);
                         computerId = data.id;
                         if (typeof(computerId) != 'undefined' && computerId !== null) {
                             computerId = data.id;
