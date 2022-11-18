@@ -17,7 +17,7 @@ class IndexController extends MonitoringAwareController
 {
     public function init()
     {
-        $this->view->hostBaseUrl = $hostBaseUrl = $this->_request->getBaseUrl();
+        // $this->view->hostBaseUrl = $hostBaseUrl = $this->_request->getBaseUrl();
         
     }
 
