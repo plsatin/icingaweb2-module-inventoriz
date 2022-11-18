@@ -3,6 +3,8 @@
 // getting the baseURL from the request
 $baseURL = $_REQUEST['url'];
 
+$headers = apache_request_headers();  
+
 // getting the request method sent in to the proxy
 function getRequestMethod() {
     return $_SERVER["REQUEST_METHOD"]; 
@@ -13,7 +15,6 @@ function getPostData() {
     return http_build_query($_POST);
 }
 
-$headers = apache_request_headers();  
 
 
 
