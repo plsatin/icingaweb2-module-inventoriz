@@ -80,10 +80,10 @@ function makePostRequest($baseURL, $headers) {
 $response = "";
 switch (getRequestMethod()) {
     case 'GET':
-        $response = makeGetRequest($baseURL);
+        $response = makeGetRequest($baseURL, $headers);
         break;
     case 'POST':
-        $response = makePostRequest($baseURL);
+        $response = makePostRequest($baseURL, $headers);
         break;
     default:
         echo "There has been an error";
