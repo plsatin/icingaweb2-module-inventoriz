@@ -126,9 +126,8 @@ $(document).ready(function () {
                             }
                         },
                         success: function (data) {
-                            loginFormAfterLogin = '<div class="header-profile-form"><a href="/profile" >' + data.user.name + '</a></div>';
-                            $('#header-login').html(loginFormAfterLogin);
-                            window.location.href='/';
+
+                            window.location.reload();
                         },
                         error: function (jqXHR, text, error) {
                             console.log(error);
@@ -159,7 +158,7 @@ $(document).ready(function () {
             },
             success: function (data) {
                 localStorage.clear();
-                window.location.href='/';
+                window.location.reload();
             },
             error: function (jqXHR, text, error) {
                 console.log(error);
