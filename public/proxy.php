@@ -3,6 +3,7 @@
 // getting the baseURL from the request
 $baseURL = $_REQUEST['url'];
 
+// getting the headers
 $headers = apache_request_headers();  
 
 // getting the request method sent in to the proxy
@@ -90,12 +91,7 @@ switch (getRequestMethod()) {
         return;
 }
 
-/*
-access-control-allow-headers →Content-Type, Authorization, Origin
-access-control-allow-methods →POST, GET, OPTIONS, PUT, DELETE
-access-control-allow-origin →*
-access-control-max-age →3600
-*/
+
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, Origin');
