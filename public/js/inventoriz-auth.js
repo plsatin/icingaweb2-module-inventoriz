@@ -10,8 +10,8 @@ $(document).ready(function () {
 
 
     var inventorizUrl = "/icingaweb2/proxy.php?url=http://itdesk.rezhcable.ru:8400";
-    var api_email = 'tech@rezhcable.ru';
-    var api_password = 'Z123456z';
+    // var api_email = 'tech@rezhcable.ru';
+    // var api_password = 'Z123456z';
 
 
     var loginFormBefore = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Вход<i class="glyph glyph-chevron-down-2"></i></a>' +
@@ -97,6 +97,9 @@ $(document).ready(function () {
 
         // $('#tree').html(loginForm);
 
+
+        api_email = prompt('Inventoriz username: ');
+        api_password = prompt('Inventoriz user password: ');
         getAPIToken(api_email, api_password);
 
     }

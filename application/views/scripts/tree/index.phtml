@@ -105,6 +105,8 @@ $config = array(
 
         } else {
 
+            console.log('При загрузке страницы не обнаружен токен для авторизации!');
+
             // loginForm = '<form id="inventoriz-login-form">' +
             //         '<div class="form-group">' +
             //             '<label for="email">Имя пользователя</label>' +
@@ -122,6 +124,8 @@ $config = array(
 
             // $('#tree').html(loginForm);
 
+
+            $('#tree').html('<p>Unauthorized</p>');
         }
 
 
