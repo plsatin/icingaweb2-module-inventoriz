@@ -13,7 +13,7 @@ function getPostData() {
     return http_build_query($_POST);
 }
 
-$headers = getallheaders();  
+$headers = apache_request_headers();  
 
 
 
