@@ -19,14 +19,15 @@ $headers = getallheaders();
 
 function makeGetRequest($baseURL, $headers) {
     $ch = curl_init();
-    $fullURL = $baseURL; 
+    $fullURL = $baseURL;
+    $headersIn = $headers;
 
     curl_setopt($ch, CURLOPT_URL, $fullURL);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headersIn);
 
     $response = curl_exec($ch);
     curl_close($ch);
@@ -43,6 +44,8 @@ function makeGetRequest($baseURL, $headers) {
 function makePostRequest($baseURL, $headers) {
     $ch = curl_init();
     $data = http_build_query($_POST);
+    $headersIn = $headers;
+
 
     curl_setopt($ch, CURLOPT_URL, $baseURL);
     curl_setopt($ch, CURLOPT_POST, true);
@@ -51,7 +54,7 @@ function makePostRequest($baseURL, $headers) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headersIn);
 
     $response = curl_exec($ch);
     curl_close($ch);
