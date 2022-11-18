@@ -59,6 +59,7 @@ $config = array(
 <script>
     $(document).ready(function () {
 
+        // Работаем через прокси, для запросов на прямую убрать: /icingaweb2/proxy.php?url=
         var inventorizUrl = "/icingaweb2/proxy.php?url=<?php echo $config['inventoriz_url']; ?>";
         var computerName = "<?php echo $treehost; ?>";
         var computerId = "";
@@ -78,9 +79,6 @@ $config = array(
                 // console.log(data);
                 auth_token = data.token;
 
-                // console.log(computerName);
-                // console.log(auth_token);
-
                 $.ajax({
                     type: 'GET',
                     url: inventorizUrl + '/api/v1/computer-name?name=' + computerName,
@@ -95,6 +93,7 @@ $config = array(
                             computerId = data.id;
                             renderComputerTree(computerId, auth_token);
                         } else {
+                            console.log(data);
                             $('#tree').html('<p>No data</p>');
                         }
                     },
@@ -114,7 +113,7 @@ $config = array(
 
 
         function renderComputerTree(computerId, auth_token){
-            console.log(auth_token);
+            // console.log(auth_token);
             $('#tree').fancytree({
                 ajax: { type: 'GET',
                     beforeSend: function (xhr) {
