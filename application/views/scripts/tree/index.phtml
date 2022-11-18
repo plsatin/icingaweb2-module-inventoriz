@@ -69,50 +69,31 @@ $config = array(
 
         if (localStorage.token) {
 
-            // var json_url_login = inventorizUrl + '/api/login';
-            // $.ajax({
-            //     type: 'POST',
-            //     url: json_url_login,
-            //     headers: {
-            //         'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            //     },
-            //     data: jQuery.param({ 'email': '<?php echo $config['inventoriz_user']; ?>', 'password': '<?php echo $config['inventoriz_password']; ?>'}),
-            //     success: function (data) {
-            //         // console.log(data);
-            //         auth_token = data.token;
+            auth_token = localStorage.token;
 
-                    auth_token = localStorage.token;
-
-                    $.ajax({
-                        type: 'GET',
-                        url: inventorizUrl + '/api/v1/computer-name?name=' + computerName,
-                        // data: jQuery.param({ 'name': computerName }),
-                        headers: {
-                            'Authorization': 'Bearer ' + auth_token
-                        },
-                        success: function (data) {
-                            // console.log(data);
-                            computerId = data.id;
-                            if (typeof(computerId) != 'undefined' && computerId !== null) {
-                                computerId = data.id;
-                                renderComputerTree(computerId, auth_token);
-                            } else {
-                                console.log(data);
-                                $('#tree').html('<p>No data</p>');
-                            }
-                        },
-                        error: function (jqXHR, text, error) {
-                            $('#tree').html('<p>' + error + '</p>');
-                            console.log(error);
-                        }
-                    });
-
-
-            //     },
-            //     error: function (jqXHR, text, error) {
-            //         console.log(error);
-            //     }
-            // });
+            $.ajax({
+                type: 'GET',
+                url: inventorizUrl + '/api/v1/computer-name?name=' + computerName,
+                // data: jQuery.param({ 'name': computerName }),
+                headers: {
+                    'Authorization': 'Bearer ' + auth_token
+                },
+                success: function (data) {
+                    // console.log(data);
+                    computerId = data.id;
+                    if (typeof(computerId) != 'undefined' && computerId !== null) {
+                        computerId = data.id;
+                        renderComputerTree(computerId, auth_token);
+                    } else {
+                        console.log(data);
+                        $('#tree').html('<p>No data</p>');
+                    }
+                },
+                error: function (jqXHR, text, error) {
+                    $('#tree').html('<p>' + error + '</p>');
+                    console.log(error);
+                }
+            });
 
         } else {
 
@@ -169,3 +150,70 @@ $config = array(
 
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+/*
+// Предыдущая версия с авторизацией
+
+            var json_url_login = inventorizUrl + '/api/login';
+            $.ajax({
+                type: 'POST',
+                url: json_url_login,
+                headers: {
+                    'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                },
+                data: jQuery.param({ 'email': '<?php echo $config['inventoriz_user']; ?>', 'password': '<?php echo $config['inventoriz_password']; ?>'}),
+                success: function (data) {
+                    // console.log(data);
+                    auth_token = data.token;
+
+                    auth_token = localStorage.token;
+
+                    $.ajax({
+                        type: 'GET',
+                        url: inventorizUrl + '/api/v1/computer-name?name=' + computerName,
+                        // data: jQuery.param({ 'name': computerName }),
+                        headers: {
+                            'Authorization': 'Bearer ' + auth_token
+                        },
+                        success: function (data) {
+                            // console.log(data);
+                            computerId = data.id;
+                            if (typeof(computerId) != 'undefined' && computerId !== null) {
+                                computerId = data.id;
+                                renderComputerTree(computerId, auth_token);
+                            } else {
+                                console.log(data);
+                                $('#tree').html('<p>No data</p>');
+                            }
+                        },
+                        error: function (jqXHR, text, error) {
+                            $('#tree').html('<p>' + error + '</p>');
+                            console.log(error);
+                        }
+                    });
+
+
+                },
+                error: function (jqXHR, text, error) {
+                    console.log(error);
+                }
+            });
+
+
+*/
+
+?>
