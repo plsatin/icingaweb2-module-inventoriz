@@ -8,8 +8,8 @@
  $(document).ready(function () {
 
     // Работаем через прокси, для запросов на прямую убрать: /icingaweb2/proxy.php?url=
-    var inventorizUrl = "/icingaweb2/proxy.php?url=<?php echo $config['inventoriz_url']; ?>";
-    var computerName = "<?php echo $treehost; ?>";
+    var inventorizUrl = "/icingaweb2/proxy.php?url=" + $('#tree').attr('data-api-url');
+    var computerName = $('#tree').attr('data-computer-name');
     var computerId = "";
 
     var auth_token;
