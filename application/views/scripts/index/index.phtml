@@ -12,6 +12,8 @@
 
     $config = Config::module('inventoriz');
     $server_url = $config->get('inventoriz', 'url');
+    $inventoriz_user = $config->get('inventoriz', 'user');
+    $inventoriz_password = $config->get('inventoriz', 'password');
 
     // Requirements
     global $config;
