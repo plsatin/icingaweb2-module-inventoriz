@@ -75,10 +75,29 @@ $(document).ready(function () {
         }
 
     } else {
-        // localStorage.clear();
-        $('#header-login').html(loginFormBefore);
         console.log('При загрузке страницы не обнаружен токен для авторизации!');
+
+        // localStorage.clear();
+        loginForm = '<form id="inventoriz-login-form">' +
+                '<div class="form-group">' +
+                    '<label for="email">Имя пользователя</label>' +
+                    '<input type="email" class="form-control" id="email" name="email" placeholder="Имя пользователя" required="">' +
+                '</div>' +
+                '<div class="form-group">' +
+                    '<label for="password">Пароль</label>' +
+                    '<input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required="">' +
+                '</div>' +
+                '<div class="form-group">' +
+                    '<button type="submit" class="btn btn-primary">Вход</button>' +
+                    '<button type="button" class="btn btn-info" data-dismiss="modal">Отмена</button>' +
+                '</div>' +
+            '</form>';
+
+        $('#tree').html(loginForm);
+
     }
+
+
 
     $("#inventoriz-login-form").submit(function () {
         var json_url_login = inventorizUrl + '/api/login';
