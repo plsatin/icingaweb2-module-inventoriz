@@ -8,9 +8,9 @@
 
     function onLoadIndexPage() {
 
-        $.ajaxSetup({
-            async: false,
-        });
+        // $.ajaxSetup({
+        //     async: false,
+        // });
 
         var inventorizUrl = $('#inventoriz-index').attr('data-api-url');
 

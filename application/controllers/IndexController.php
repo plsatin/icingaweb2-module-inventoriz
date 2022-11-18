@@ -13,13 +13,13 @@ use Icinga\Web\Widget;
 use Icinga\Authentication\Auth;
 
 
-class IndexController extends MonitoringAwareController
+class IndexController extends Controller
 {
-    public function init()
-    {
-        // $this->view->hostBaseUrl = $hostBaseUrl = $this->_request->getBaseUrl();
+    // public function init()
+    // {
+    //     $this->view->hostBaseUrl = $hostBaseUrl = $this->_request->getBaseUrl();
         
-    }
+    // }
 
     public function indexAction()
     {
@@ -52,15 +52,11 @@ class IndexController extends MonitoringAwareController
 
 
 
-        $this->view->tabs = $this->tabs()->activate('index');
+        // $this->view->tabs = $this->tabs()->activate('index');
 
 
-    }
 
 
-    
-    protected function tabs()
-    {
         $auth = Auth::getInstance();
         
         if ($auth->hasPermission('inventoriz/hosts'))
@@ -86,25 +82,57 @@ class IndexController extends MonitoringAwareController
 
 
         }
+
     }
 
 
+    
+    // protected function tabs()
+    // {
+    //     $auth = Auth::getInstance();
+        
+    //     if ($auth->hasPermission('inventoriz/hosts'))
+    //     {
+    //         return Widget::create('tabs')->add(
+    //             'index',
+    //             array(
+    //                 'label' => $this->translate('Hosts'),
+    //                 'url'   => 'inventoriz'
+    //             )
+    //         );
+            
+    //     } else {
+
+    //         return Widget::create('tabs')->add(
+    //             'tree',
+    //             array(
+    //                 'label' => $this->translate('Information'),
+    //                 'title' => $this->translate('Hardware Information'),
+    //                 'url'   => 'inventoriz/tree'
+    //             )
+    //         );
 
 
-    /**
-     * Apply filters on a DataView
-     *
-     * @param DataView  $dataView       The DataView to apply filters on
-     */
-    protected function filterQuery(DataView $dataView)
-    {
-        $this->setupFilterControl(
-            $dataView,
-            null,
-            null,
-            array_merge(['format', 'stateType', 'addColumns', 'problems']
-        ));
-        $this->handleFormatRequest($dataView);
-    }
+    //     }
+    // }
+
+
+
+
+    // /**
+    //  * Apply filters on a DataView
+    //  *
+    //  * @param DataView  $dataView       The DataView to apply filters on
+    //  */
+    // protected function filterQuery(DataView $dataView)
+    // {
+    //     $this->setupFilterControl(
+    //         $dataView,
+    //         null,
+    //         null,
+    //         array_merge(['format', 'stateType', 'addColumns', 'problems']
+    //     ));
+    //     $this->handleFormatRequest($dataView);
+    // }
 
 }
