@@ -83,8 +83,8 @@ $config = array(
 
                 $.ajax({
                     type: 'GET',
-                    url: inventorizUrl + '/api/v1/computer-name',
-                    data: jQuery.param({ 'name': computerName }),
+                    url: inventorizUrl + '/api/v1/computer-name?name=' + computerName,
+                    // data: jQuery.param({ 'name': computerName }),
                     headers: {
                         'Authorization': 'Bearer ' + auth_token
                     },
