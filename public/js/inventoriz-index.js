@@ -8,16 +8,15 @@
 
     function onLoadIndexPage() {
 
-        // $.ajaxSetup({
-        //     async: false,
-        // });
+        $.ajaxSetup({
+            async: false,
+        });
 
         var inventorizUrl = $('#inventoriz-index').attr('data-api-url');
 
-        var dataManufacturer = [];
-        var dataOS = [];
+        // var dataManufacturer = [];
+        // var dataOS = [];
 
-        // $(document).ready(function () {
 
         dataManufacturer = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/113'); //86
         dataOS = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/15');
