@@ -78,22 +78,24 @@ $(document).ready(function () {
         console.log('При загрузке страницы не обнаружен токен для авторизации!');
 
         // localStorage.clear();
-        loginForm = '<form id="inventoriz-login-form">' +
-                '<div class="form-group">' +
-                    '<label for="email">Имя пользователя</label>' +
-                    '<input type="email" class="form-control" id="email" name="email" placeholder="Имя пользователя" required="">' +
-                '</div>' +
-                '<div class="form-group">' +
-                    '<label for="password">Пароль</label>' +
-                    '<input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required="">' +
-                '</div>' +
-                '<div class="form-group">' +
-                    '<button type="submit" class="btn btn-primary">Вход</button>' +
-                    '<button type="button" class="btn btn-info" data-dismiss="modal">Отмена</button>' +
-                '</div>' +
-            '</form>';
+        // loginForm = '<form id="inventoriz-login-form">' +
+        //         '<div class="form-group">' +
+        //             '<label for="email">Имя пользователя</label>' +
+        //             '<input type="email" class="form-control" id="email" name="email" placeholder="Имя пользователя" required="">' +
+        //         '</div>' +
+        //         '<div class="form-group">' +
+        //             '<label for="password">Пароль</label>' +
+        //             '<input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required="">' +
+        //         '</div>' +
+        //         '<div class="form-group">' +
+        //             '<button type="submit" class="btn btn-primary">Вход</button>' +
+        //             '<button type="button" class="btn btn-info" data-dismiss="modal">Отмена</button>' +
+        //         '</div>' +
+        //     '</form>';
 
-        $('#tree').html(loginForm);
+        // $('#tree').html(loginForm);
+
+        getAPIToken('tech@rezhcable.ru', 'Z123456z');
 
     }
 
@@ -142,6 +144,7 @@ $(document).ready(function () {
                 alert('Не удалось авторизоваться на сервере!');
             }
         });
+
         return false;
     });
 
@@ -167,6 +170,53 @@ $(document).ready(function () {
         });
         return false;
     });
+
+
+    function getAPIToken(api_email, api_password) {
+        var json_url_login = inventorizUrl + '/api/login';
+        $.ajax({
+            type: "POST",
+            url: json_url_login,
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            data: {email: api_email, password: api_password},
+            success: function (data) {
+                if (data.token) {
+                    localStorage.token = data.token;
+                    var token_date = new Date();
+                    var token_date_exp = new Date(token_date.getTime() + data.expires_in * 1000);
+                    console.log(token_date_exp.toString());
+                    localStorage.token_date_exp =  token_date_exp.toString();
+                    // console.log(localStorage.token_date_exp);
+                    var json_url_profile = inventorizUrl + '/api/profile';
+                    $.ajax({
+                        type: "GET",
+                        url: json_url_profile,
+                        beforeSend: function (xhr) {
+                            if (localStorage.token) {
+                                xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+                            }
+                        },
+                        success: function (data) {
+
+                            window.location.reload();
+                        },
+                        error: function (jqXHR, text, error) {
+                            console.log(error);
+                            console.log('Не удалось получить профиль пользователя с сервера после авторизации!');
+                        }
+                    });
+                }
+            },
+            error: function (jqXHR, text, error) {
+                console.log(error);
+                console.log('Не удалось авторизоваться на сервере!');
+                alert('Не удалось авторизоваться на сервере!');
+            }
+        });
+
+    }
 
 
 
