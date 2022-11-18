@@ -36,7 +36,10 @@ $this->provideConfigTab('Configuration', array(
 
 
 $this->provideCssFile('fancytree/ui.fancytree.css');
+$this->provideCssFile('jquery.dataTables.min.css');
+
+$this->provideJsFile('inventoriz-auth.js');
 
 $this->provideJsFile('fancytree/jquery-ui-dependencies/jquery.fancytree.ui-deps.js');
 $this->provideJsFile('fancytree/jquery.fancytree.js');
-$this->provideJsFile('inventoriz-auth.js');
+$this->provideJsFile('jquery.dataTables.min.js');
