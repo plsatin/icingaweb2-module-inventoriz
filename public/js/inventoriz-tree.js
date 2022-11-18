@@ -5,68 +5,72 @@
 
 
 
- $(document).ready(function () {
+    function onLoadTreePage() {
 
-    // Работаем через прокси, для запросов на прямую убрать: /icingaweb2/proxy.php?url=
-    var inventorizUrl = "/icingaweb2/proxy.php?url=" + $('#tree').attr('data-api-url');
-    var computerName = $('#tree').attr('data-computer-name');
-    var computerId = "";
+        // Работаем через прокси, для запросов на прямую убрать: /icingaweb2/proxy.php?url=
+        var inventorizUrl = "/icingaweb2/proxy.php?url=" + $('#tree').attr('data-api-url');
+        var computerName = $('#tree').attr('data-computer-name');
+        var computerId = "";
 
-    var auth_token;
+        var auth_token;
 
 
-    if (localStorage.token) {
+        if (localStorage.token) {
 
-        auth_token = localStorage.token;
+            auth_token = localStorage.token;
 
-        $.ajax({
-            type: 'GET',
-            url: inventorizUrl + '/api/v1/computer-name?name=' + computerName,
-            // data: jQuery.param({ 'name': computerName }),
-            headers: {
-                'Authorization': 'Bearer ' + auth_token
-            },
-            success: function (data) {
-                // console.log(data);
-                computerId = data.id;
-                if (typeof(computerId) != 'undefined' && computerId !== null) {
+            $.ajax({
+                type: 'GET',
+                url: inventorizUrl + '/api/v1/computer-name?name=' + computerName,
+                // data: jQuery.param({ 'name': computerName }),
+                headers: {
+                    'Authorization': 'Bearer ' + auth_token
+                },
+                success: function (data) {
+                    // console.log(data);
                     computerId = data.id;
-                    renderComputerTree(computerId, auth_token);
-                } else {
-                    console.log(data);
-                    $('#tree').html('<p>No data</p>');
+                    if (typeof(computerId) != 'undefined' && computerId !== null) {
+                        computerId = data.id;
+                        renderComputerTree(computerId, auth_token);
+                    } else {
+                        console.log(data);
+                        $('#tree').html('<p>No data</p>');
+                    }
+                },
+                error: function (jqXHR, text, error) {
+                    $('#tree').html('<p>' + error + '</p>');
+                    console.log(error);
                 }
-            },
-            error: function (jqXHR, text, error) {
-                $('#tree').html('<p>' + error + '</p>');
-                console.log(error);
-            }
-        });
+            });
 
-    } else {
+        } else {
 
-        console.log('При загрузке страницы не обнаружен токен для авторизации!');
+            console.log('При загрузке страницы не обнаружен токен для авторизации!');
 
-        // loginForm = '<form id="inventoriz-login-form">' +
-        //         '<div class="form-group">' +
-        //             '<label for="email">Имя пользователя</label>' +
-        //             '<input type="email" class="form-control" id="email" name="email" placeholder="Имя пользователя" required="">' +
-        //         '</div>' +
-        //         '<div class="form-group">' +
-        //             '<label for="password">Пароль</label>' +
-        //             '<input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required="">' +
-        //         '</div>' +
-        //         '<div class="form-group">' +
-        //             '<button type="submit" class="btn btn-primary">Вход</button>' +
-        //             '<button type="button" class="btn btn-info" data-dismiss="modal">Отмена</button>' +
-        //         '</div>' +
-        //     '</form>';
+            // loginForm = '<form id="inventoriz-login-form">' +
+            //         '<div class="form-group">' +
+            //             '<label for="email">Имя пользователя</label>' +
+            //             '<input type="email" class="form-control" id="email" name="email" placeholder="Имя пользователя" required="">' +
+            //         '</div>' +
+            //         '<div class="form-group">' +
+            //             '<label for="password">Пароль</label>' +
+            //             '<input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required="">' +
+            //         '</div>' +
+            //         '<div class="form-group">' +
+            //             '<button type="submit" class="btn btn-primary">Вход</button>' +
+            //             '<button type="button" class="btn btn-info" data-dismiss="modal">Отмена</button>' +
+            //         '</div>' +
+            //     '</form>';
 
-        // $('#tree').html(loginForm);
+            // $('#tree').html(loginForm);
 
 
-        $('#tree').html('<p>Unauthorized</p>');
+            $('#tree').html('<p>Unauthorized</p>');
+        }
+
+
     }
+
 
 
 
@@ -95,9 +99,6 @@
         });
     }
 
-
-
-});
 
 
 

@@ -5,39 +5,60 @@
 
 
 
-$(document).ready(function () {
+
+    function onLoadIndexPage() {
+
+        // $.ajaxSetup({
+        //     async: false,
+        // });
+
+        var inventorizUrl = "<?php echo $config['inventoriz_url']; ?>";
+
+        var dataManufacturer = [];
+        var dataOS = [];
+
+        // $(document).ready(function () {
+
+        dataManufacturer = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/113'); //86
+        dataOS = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/15');
+        dataCPU = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/4');
+        // dataRAM = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/88');
+        dataUpdated = getDataFromInventorizUpdated(inventorizUrl + '/api/v1/reports/computers/last_updated');
+
+        // console.log(dataUpdated);
 
 
-    // $.ajaxSetup({
-    //     async: false,
-    // });
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChartManufacturers);
+        google.charts.setOnLoadCallback(drawChartOS);
+        google.charts.setOnLoadCallback(drawChartCPU);
 
-    var inventorizUrl = "<?php echo $config['inventoriz_url']; ?>";
-
-    var dataManufacturer = [];
-    var dataOS = [];
-
-    // $(document).ready(function () {
-
-    dataManufacturer = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/113'); //86
-    dataOS = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/15');
-    dataCPU = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/4');
-    // dataRAM = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/88');
-    dataUpdated = getDataFromInventorizUpdated(inventorizUrl + '/api/v1/reports/computers/last_updated');
-
-    // console.log(dataUpdated);
+        google.charts.setOnLoadCallback(drawChartUpdated);
 
 
-    google.charts.load("current", { packages: ["corechart"] });
-    google.charts.setOnLoadCallback(drawChartManufacturers);
-    google.charts.setOnLoadCallback(drawChartOS);
-    google.charts.setOnLoadCallback(drawChartCPU);
 
-    google.charts.setOnLoadCallback(drawChartUpdated);
+        // setTimeout(function(){
+            $('#tableComputers').DataTable({
+                "ajax": inventorizUrl + '/api/v1/reports/computers/list',
+                "columns": [
+                    { "width": "20%" },
+                    { "width": "15%" },
+                    { "width": "28%" },
+                    { "width": "27%" },
+                    { "width": "10%", "className": "dt-body-right" }
+                ],
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.11.4/i18n/ru.json'
+                }
+            });
+            // }, 1000);
+        
 
 
-    // });
+    }
 
+
+    
     function drawChartManufacturers() {
         var data = google.visualization.arrayToDataTable(dataManufacturer);
         var options = {
@@ -197,21 +218,3 @@ $(document).ready(function () {
 
 
 
-    // setTimeout(function(){
-    $('#tableComputers').DataTable({
-        "ajax": inventorizUrl + '/api/v1/reports/computers/list',
-        "columns": [
-            { "width": "20%" },
-            { "width": "15%" },
-            { "width": "28%" },
-            { "width": "27%" },
-            { "width": "10%", "className": "dt-body-right" }
-        ],
-        language: {
-            url: '//cdn.datatables.net/plug-ins/1.11.4/i18n/ru.json'
-        }
-    });
-    // }, 1000);
-
-
-});
