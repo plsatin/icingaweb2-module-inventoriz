@@ -71,7 +71,17 @@ switch (getRequestMethod()) {
     return;
 }
 
-header('Content-Type: application/json; charset=utf-8');
+/*
+access-control-allow-headers →Content-Type, Authorization, Origin
+access-control-allow-methods →POST, GET, OPTIONS, PUT, DELETE
+access-control-allow-origin →*
+access-control-max-age →3600
+*/
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, Origin');
+header('Access-Control-Max-Age: 3600');
+header('Content-Type: application/json');
 echo $response;
 
 ?>
