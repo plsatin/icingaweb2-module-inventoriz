@@ -47,7 +47,7 @@
                     { "width": "10%", "className": "dt-body-right" }
                 ],
                 language: {
-                    url: '/icingaweb2/images/inventoriz/ru.json'
+                    url: '/icingaweb2/img/inventoriz/datatables/ru.json'
                 }
             });
             // }, 1000);
