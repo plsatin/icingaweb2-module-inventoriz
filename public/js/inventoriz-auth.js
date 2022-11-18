@@ -80,7 +80,7 @@ $(document).ready(function () {
         console.log('При загрузке страницы не обнаружен токен для авторизации!');
     }
 
-    $("#login-form").submit(function () {
+    $("#inventoriz-login-form").submit(function () {
         var json_url_login = inventorizUrl + '/api/login';
         $.ajax({
             type: "POST",
@@ -88,7 +88,7 @@ $(document).ready(function () {
             headers: {
                 'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
             },
-            data: $('#login-form').serialize(),
+            data: $('#inventoriz-login-form').serialize(),
             success: function (data) {
                 if (data.token) {
                     localStorage.token = data.token;
