@@ -40,7 +40,11 @@
             $('#tableComputers').DataTable({
                 "ajax": inventorizUrl + '/api/v1/reports/computers/list',
                 "columns": [
-                    { "width": "20%" },
+                    { "width": "20%", title: "name", data: "name",
+                    render: function(data) {
+                        data = '<a href="inventoriz/tree?host=' + data + '">' + data + '</a>';
+                        return data;
+                    } },
                     { "width": "15%" },
                     { "width": "28%" },
                     { "width": "27%" },
@@ -52,7 +56,6 @@
             });
             // }, 1000);
         
-
 
     }
 
