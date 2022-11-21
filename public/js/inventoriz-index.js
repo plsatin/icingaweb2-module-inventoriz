@@ -38,17 +38,17 @@
 
         // setTimeout(function(){
             $('#tableComputers').DataTable({
-                "ajax": inventorizUrl + '/api/v1/reports/computers/list',
-                "columns": [
-                    { "width": "20%", title: "name", data: "name",
-                    render: function(data) {
-                        data = '<a href="inventoriz/tree?host=' + data + '">' + data + '</a>';
-                        return data;
-                    } },
-                    { "width": "15%" },
-                    { "width": "28%" },
-                    { "width": "27%" },
-                    { "width": "10%", "className": "dt-body-right" }
+                ajax: inventorizUrl + '/api/v1/reports/computers/list',
+                columns: [
+                    { width: '20%',
+                        render: function(data) {
+                            data = '<a href="inventoriz/tree?host=' + data + '">' + data + '</a>';
+                            return data;
+                        } },
+                    { width: '15%' },
+                    { width: '28%' },
+                    { width: '27%' },
+                    { width: '10%', className: 'dt-body-right' }
                 ],
                 language: {
                     url: '/icingaweb2/img/inventoriz/datatables/ru.json'
