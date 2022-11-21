@@ -22,7 +22,7 @@
         dataOS = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/15');
         dataCPU = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/4');
         // dataRAM = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/88');
-        dataUpdated = getDataFromInventorizUpdated(inventorizUrl + '/api/v1/reports/computers/last_updated');
+        dataUpdated = getDataFromInventorizUpdated(inventorizUrl + '/api/v1/reports/computers/last_updated?limit=30');
 
         // console.log(dataUpdated);
 
