@@ -18,7 +18,7 @@
         if (localStorage.token) {
 
             auth_token = localStorage.token;
-
+            console.log(localStorage);
             $.ajax({
                 type: 'GET',
                 url: inventorizUrl + '/api/v1/computer-name?name=' + computerName,
