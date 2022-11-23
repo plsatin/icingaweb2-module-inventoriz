@@ -206,7 +206,7 @@
         $.ajax({
             type: "GET",
             url: dataUrl,
-            data: jQuery.param({ 'limit': limit, 'order': 'desc' }),
+            data: { 'limit': limit, 'order': 'desc' },
             beforeSend: function (xhr) {
                 if (localStorage.token) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
