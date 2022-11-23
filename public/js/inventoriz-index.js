@@ -22,7 +22,7 @@
         dataOS = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/15');
         dataCPU = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/4');
         // dataRAM = getDataFromInventoriz(inventorizUrl + '/api/v1/reports/computers/properties/88');
-        dataUpdated = getDataFromInventorizUpdated(inventorizUrl + '/api/v1/reports/computers/last_updated', 12);
+        dataUpdated = getDataFromInventorizUpdated(inventorizUrl + '/api/v1/reports/computers/last_updated', 5);
 
         // console.log(dataUpdated);
 
@@ -201,7 +201,7 @@
     }
 
     function getDataFromInventorizUpdated(dataUrl, limit) {
-        console.log('Limit:' + limit);
+        // console.log('Limit:' + limit);
         var arrValues = [];
         $.ajax({
             type: "GET",
