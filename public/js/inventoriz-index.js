@@ -165,12 +165,16 @@
     }
 
 
-    function getDataFromInventoriz(dataUrl, limit) {
+    function getDataFromInventoriz(dataUrl) {
         var arrValues = [];
         $.ajax({
             type: "GET",
             url: dataUrl,
-            data: jQuery.param({ 'limit': limit, 'order': 'desc' }),
+            beforeSend: function (xhr) {
+                if (localStorage.token) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+                }
+            },
             success: function (data) {
                 // console.log(data);
                 var result = [];
@@ -197,6 +201,7 @@
     }
 
     function getDataFromInventorizUpdated(dataUrl, limit) {
+        console.log('Limit:' + limit);
         var arrValues = [];
         $.ajax({
             type: "GET",
